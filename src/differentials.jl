@@ -191,6 +191,9 @@ end
     return element, (externed, new_state)
 end
 
+# unary + unthunks
+Base.:+(x::AbstractThunk) = x()
+
 #####
 ##### `Thunk`
 #####

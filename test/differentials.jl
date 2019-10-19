@@ -66,6 +66,11 @@
             @test (@thunk(3))() == 3
             @test (@thunk(@thunk(3)))() isa Thunk
         end
+
+        @testset "unary +" begin
+            t = @thunk(1+2)
+            @test +(t) === t()
+        end
     end
 
     @testset "No ambiguities in $f" for f in (+, *)
