@@ -31,6 +31,8 @@ end
 
         @test propertynames(Composite{Tuple{Float64,}}(2.0)) == (1,)
         @test getproperty(Composite{Tuple{Float64,}}(2.0), 1) == 2.0
+        @test getproperty(Composite{Tuple{Float64,}}(@thunk 2.0^2), 1) == 4.0
+        @test getproperty(Composite{Tuple{Float64,}}(a=(@thunk 2.0^2),), :a) == 4.0
 
         @test length(Composite{Foo}(x=2.5)) == 1
         @test length(Composite{Tuple{Float64,}}(2.0)) == 1
